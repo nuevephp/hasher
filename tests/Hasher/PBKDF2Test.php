@@ -1,27 +1,27 @@
 <?php
 
 use Hasher\Hasher;
-use Hasher\Providers\MD5;
+use Hasher\Providers\PBKDF2;
 
-class MD5Test extends \PHPUnit_Framework_TestCase
+class PBKDF2Test extends \PHPUnit_Framework_TestCase
 {
     public function testHashing()
     {
-        $h = new Hasher(new MD5, '1293n#s0jznhs8jl1');
+        $h = new Hasher(new PBKDF2, '1293n#s0jznhs8jl1');
         $this->assertEquals(
-            'acbd18db4cc2f85cedef654fccc4a4d8', 
+            'ccaXQw9OnF74Gj0DflJW5DzR+T80JlVkHPUKIXWPmlM=', 
             $h->hash('foo')
         );
 
         $this->assertEquals(
-            '37b51d194a7513e45b56f6524f2d51f2', 
+            'yaWx/vD2zFOCA/YPo6GeSEyu51AGFjVPbaQPltxt/4o=', 
             $h->hash('bar')
         );
     }
 
     public function testGetSalt()
     {
-        $h = new Hasher(new MD5, '1293n#s0jznhs8jl1');
+        $h = new Hasher(new PBKDF2, '1293n#s0jznhs8jl1');
         $this->assertEquals(
             '1293n#s0jznhs8jl1', 
             $h->getSalt()

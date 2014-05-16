@@ -3,5 +3,5 @@ namespace Hasher;
 
 interface HasherInterface
 {
-    public function hash($value, $salt = null);
+    public function hash($value, $salt);
 }
